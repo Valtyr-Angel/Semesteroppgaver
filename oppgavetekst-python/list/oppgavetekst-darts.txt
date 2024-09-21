@@ -9,3 +9,5 @@ Vi her skal forbedre dartoppgaven.
  Utvid programmet til å ta imot antall piler og antall runder hver spiller skal kaste. 
  Fremfor et tilfeldig tall mellom 0 og 60, så skal du benytte de lovlige poengene man kan få med et kast. 
  Som er 0p, 1-20p (samt dobbel og trippel av disse), 25p (outer bullseye) og 50p (inner bullseye). 
+
+

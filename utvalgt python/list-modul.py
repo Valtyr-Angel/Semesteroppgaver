@@ -83,9 +83,6 @@ def moviesreleasedafter(list,year):
 #averagescore(filmer)
 #moviesreleasedafter(filmer,2010)
 
-
-
-
 #5.3
 def writetodisk(filmer,filename):
     filename=str(filename)+".txt"
@@ -106,10 +103,10 @@ def readfromdisk (filname):
     except FileNotFoundError:
         print("file not found")
 
-#writetodisk(filmer,"FILMTEST")
-#readfromdisk("FILMTEST")
+writetodisk(filmer,"FILMTEST")
+readfromdisk("FILMTEST")
 
-#BONUS3
+#BONUS
 #bonus2 A
 #file_handler.module_writetodisk(filmer,"filmliste")
 #file_handler.module_readfromdisk("filmliste")

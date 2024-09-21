@@ -1,0 +1,61 @@
+Programmering
+Vi skal fortsette med å utvide oppgaven vi lagde i Oblig 3. Du kan fortsette på din egen implementasjon, eller du kan starte fra løsningsforslaget som finnes her:
+
+Oblig3_ProposedSolution.zip
+
+Vi skal nå se gjøre noen mindre forbedringer av koden vi har i form av å implementere et interface for å kunne sortere dataene våre på en fornuftig måte. Vi skal deretter implementere litt funksjonalitet for hvordan vi kan skrive og lese data til fil. Begge temaene vil bli gjennomgått i forelesninger.
+
+Du burde ta bort det som er av kode i Main.java fra Oblig 3 og starte med en tom Main-klasse. Du kan likevel gjenbruke kode fra Oblig 3 sin Main som kan være relevant for de forskjellige oppgavene. 
+
+
+
+
+
+
+ 
+
+Oppgave 2.1 - Sammenligning og sortering
+
+Det er ofte fornuftig å kunne sortere samlinger av objekter. Lag en naturlig form for sortering ved å implementere Comparable-interfacet, som følger med i Java, i klassene CelestialBody og PlanetSystem. Du velger selv hva du ser på som en naturlig sortering for hver av disse. Altså hva de sorteres basert på, og om de sorteres fra større til mindre eller motsatt. (Dette trengs ikke gjøres komplisert). 
+
+Test at du kan sortere listen med planeter i solsystemet vi opprettet i Oblig 3.
+
+ 
+
+Oppgave 2.2 - Interface og klasse for filhåndtering
+
+I Java kan vi opprette noe som kalles "Generic Interfaces". At et interface er "generic" vil si at vi kan definere interfacet til gjelde og omhandle en type data uten å spesifisere nøyaktig hvilken datatype. F.eks. kan vi spesifisere at et interface skal omhandle et objekt (arver fra Object-klassen), uten å være mer spesifikk. Vi kan deretter ved implementasjon av et slikt interface angi hvilken spesifikk type objekt (Klasse) implementasjonen skal omhandle. Comparable-interfacet du benyttet i forrige oppgave er godt eksempel på et slikt generic interface hvor man må spesifisere hvilket type objekt det skal sammenlignes med for en gitt implementasjon. 
+
+Et generic interface som skal omhandle et objekt kan for eksempel defineres på denne måten (Legg merke til hvordan parametere og returntyper er definert for eksempel-metodene):
+
+public interface RandomInterface<T extends Object> {
+    
+    void doSomethingWithObject(T object);
+
+    T getObject();
+
+}
+Bemerk: T vil her være en referanse til den Klassen vi spesifiserer ved implementasjon. F.eks. ved implementasjonen vist under vil T referere til klassen SomeOtherClass, og dermed omhandle objekter av denne klassen:
+
+public class RandomClass implements RandomInterface<SomeOtherClass> {
+
+}
+Fordelen med slike generic interfaces er at vi kan lage ett interface som kan implementeres for mange forskjellige typer data. Altså i stedet for å være låst til en spesifikk datatype for parametere og/eller returntyper av interfacets definerte metoder.
+
+a) - Generic Interface
+
+Opprett en ny pakke kalt "interfaces" og lag et generic interface kalt ObjectFileHandler som defineres til å omhandle et type objekt. Formålet med dette interfacet er å definere en kontrakt på nødvendige fil-operasjoner for objekter. Altså hvordan objekter skal skrives til og leses fra fil. Definer så opp følgende metoder i interfacet med passende return-typer og input-parametere (Tenk i forhold til at interfacet er generisk):
+
+writeObjectsToFile()
+Denne metoden er ment til å skrive en liste med objekter (av klassen som blir spesifisert ved interface-implementasjon) til en fil med et angitt navn.
+readObjectsFromFile()
+Denne metoden er ment til å lese en fil basert på et angitt filnavn og returnere en liste av objekter (av klassen som blir spesifisert ved interface-implementasjon). 
+En liten kommentar fra Ole-E: Vanligvis hadde det nok egentlig vært lurere å definere interfacet til å være enda mer generelt. Altså ikke bare omhandle objekter. Men for å begrense eventuell forvirring rundt generiske interfaces i denne oppgaven, tar interfacets abstrakte metoder utgangspunkt i at vi alltid jobber med lister av objekter. 
+
+b) - Klasse for filhåndtering av Star-objekter
+
+Opprett en ny mappe "tools" og lag en ny klasse StarCSVFileHandler. Denne klassen skal fungere som et "verktøy" for å skrive og lese Star-objekter til fil, hvor filene skal følge CSV-formatet. (Altså data som er separert med et spesifikt skilletegn. Du står selv fritt til å velge dette tegnet). Merk også, at selv om klassen er ment som et "verktøy", er det ikke nødvendigvis slik at den bør være abstrakt.
+
+Så: Implementer FileHandler-interfacet for StarCSVFileHandler-klassen og definer at interface-implementasjonen skal gjelde Star-objekter. Skriv passende kodekropper for writeObjectsToFile() og readObjectsFromFile() ut ifra beskrivelsene i forrige deloppgave. 
+
+Etter du har fulført implementasjonen, opprett en rekke med med Star-objekter i Main-klassen og benytt StarCSVFileHandler til å skrive objektene til fil. Les deretter objektene fra filen du nettopp opprettet og skriv ut en beskrivelse for hver av dem. Du kan benytte følgende fil som eksempel data for forskjellige "stjerner": stars.txt (Eksempeldataene er basert på følgende forskingsrapportLinks to an external site..)

@@ -1,0 +1,39 @@
+1. Forsøke å løse oppgaven på egenhånd, kun basert på "kravene" definert i oppgavebeskrivelsen under. 
+Det er anbefalt å gjøre et forsøk på denne fremgangsmåten, ettersom man da må vurdere hva som skal implementeres generelt,
+ hva hvordan man stegvis skal gå frem for å komme i mål. Hint: Start med de mest essensielle bitene av programmet. Deretter utvid med "kulere" funksjonalitet.
+
+Oppgavebeskrivelse
+
+Blackjack er et gamblingbasert kortspill med et relativt enkelt premiss. 
+En gitt spiller spiller mot en dealer, hvor målet er å ha en kort-hånd som er verdt mer enn dealerens, uten at håndens verdien er over 21. 
+I konteksten av denne oppgaven er kortene baserte på èn vanlig bunke med 52 kort. Altså 4 av hver kortverdi.
+ Typen kort (hjerte, kløver, spar, ruter) har ingen betydning i Blackjack. Kun kortenes verdi. Kortverdiene for forskjellige kort er som følger: 
+
+2 til 10 --> verdt tilsvarende kortets tall
+Billedkort (J, Q, K) --> alle er individuelt verdt 10 
+Ess --> verdt enten 1 eller 11, avhengig av hånden - Tallet som er mest fordelaktig, gjelder. 
+ 
+
+I blackjack er det 4 mulige utfall: 
+
+Spilleren vinner --> Spilleren tjener like mange chips som spesifisert i innsatsen 
+Dealeren vinner --> Spilleren mister like mange chips som spesifisert i innsatsen.
+Ingen vinner --> Spillerens chips forblir det samme som før innsatsen 
+Blackjack --> Spilleren tjener 2 x antallet chips spesifisert i innsatsen 
+ 
+
+De 4 utfallene forekommer ut ifra spill-flyten, som beskrives under:
+
+Spilleren starter enhver runde med Blackjack med å oppgi en innsats av sine chips. Spilleren må oppgi en innsats som er høyere enn 0, men kan ikke være høyere enn det totale antallet chips spilleren har.
+ Spilleren og dealeren får så tildelt 2 kort hver, tilfeldig trukket fra kortstokken (kortene blir tatt ut av stokken). Spilleren kan se sine egne kort, men bare ett av dealerens kort.
+Hvis spillerens initielle kort har en sammenlagt verdi av 21 (kombinasjonen av et Ess og et kort som er verdt 10) kalles dette en "blackjack", og spilleren vinner automatisk.
+ I dette tilfellet tjener spilleren 2 ganger innsatsen av chips. Hvis den initielle trekningen ikke resulterer i en "blackjack", vil spilleren få et valg mellom det som kalles "Hit" eller "Stand": 
+
+Hit --> Spilleren får et nytt kort, tilfeldig trukket fra stokken, lagt til i hånden sin. 
+Stand --> Spilleren velger å låse hånden sin slik den nå er 
+Spilleren vil iterativt fortsette å ha å muligheten til å velge mellom Hit eller Stand helt til spilleren velger Stand, eller hvis håndens verdi har gått over 21 som resultatet av en Hit.
+ Hvis håndens verdi går over 21 kalles dette at spilleren har "Bustet" og dealeren vinner automatisk, som medfører at spillerens innsats blir tapt.
+  Derimot hvis spilleren ikke har blitt Bustet og velger Stand, vil dealeren iterativt trekke ett kort av gangen helt til han/huns håndverdi er større enn 17. 
+  Hvis dette medfører at dealeren får en håndverdi større enn 21, vil dealeren buste, som betyr at spilleren vinner og tjener samme antall chips som ble satset. 
+  Hvis dealeren ikke buster, vil spillerens og dealerens håndverdi sammenlignes og den med høyeste håndverdi vil vinne.
+   I motsetning, hvis håndverdiene er like, vinner ingen, og spilleren verken mister eller tjener chips.  
